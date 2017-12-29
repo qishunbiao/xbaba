@@ -16,21 +16,11 @@ public class UserController {
 	
 	
 	@RequestMapping("/test.action")
-	public String test(){
-		System.out.println("测试");
+	public String test(User u){
+		System.out.println("测试"+u.getId());
 		User user = userService.findOne(2);
 		System.out.println(user);
-		update();
 		return "test";
-	}
-	
-	public void update(){
-		System.out.println("更改");
-		User user = new User();
-		user.setId(2);
-		user.setUsername("张三丰");
-		userService.updateByUser(user);
-		
 	}
 	
 	

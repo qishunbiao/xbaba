@@ -19,11 +19,23 @@
 
 		<!-- 让DispatcherServlet启用基于annotation的HandlerMapping -->
 		<!-- 扩充了主键驱动，可以将请求参数绑定到控制器参数 -->
-		<mvc:annotation-driven />
+		<mvc:annotation-driven conversion-service="formattingConversionServiceFactoryBean" />
+		
+		<!-- 配置转换类 -->
+		<bean id="formattingConversionServiceFactoryBean" class="org.springframework.format.support.FormattingConversionServiceFactoryBean" >
+			<property name="converters">
+				<set>
+					<bean class="cn.itcast.xbaba.web.conversion.DateConverter" />
+				</set>
+			</property>
+		</bean>
+		
+		
+		
+		
 		
 		<!-- 静态资源处理，css,js,imgs -->
 		<mvc:resources location="/resources/" mapping="/resources/**"></mvc:resources>
-		
 		
 		
 		
